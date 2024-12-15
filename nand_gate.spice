@@ -1,0 +1,20 @@
+* SPICE3 file created from nand_gate.ext - technology: scmos
+.include ./ami05.txt
+.option scale=0.3u
+
+Vpower vdd gnd 3.3
+vin1 A gnd dc 0 pulse(3.3 0 0 0.1u 0.1u 20u 40u)
+vin2 B gnd dc 0 pulse(0 3.3 0 0.1u 0.1u 10u 20u)
+
+M1000 Y A vdd vdd pfet w=20 l=2
++  ad=120 pd=52 as=200 ps=100
+M1001 a_n3_n42# A gnd Gnd nfet w=10 l=2
++  ad=60 pd=32 as=50 ps=30
+M1002 vdd B Y vdd pfet w=20 l=2
++  ad=0 pd=0 as=0 ps=0
+M1003 Y B a_n3_n42# Gnd nfet w=10 l=2
++  ad=50 pd=30 as=0 ps=0
+C0 vdd Gnd 5.63fF
+
+.tran 10u 80u 20u
+.end
